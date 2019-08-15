@@ -15,6 +15,7 @@ Install-Package Arg -Version 1.0.2
 ## Usage
 
 ```c#
+// parse command line inputs in a menu form
 using Arg;
 
 var menu = new Menu("\tExample :)", "Option 1", "Cheese", "That option with the long name");
@@ -23,6 +24,7 @@ var option = menu.GetOption();
 ```
 
 ```c#
+// parse command line paramaters from external input
 using Arg;
 
 // create parser object and define expected arguments
