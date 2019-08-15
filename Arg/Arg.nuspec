@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+	<language>en-US</language>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/EttienneS/Arg</projectUrl>
+    <iconUrl>https://github.com/EttienneS/Arg/blob/master/pirate.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>CommandLine Argument Parser</tags>
+  </metadata>
+</package>
