@@ -6,10 +6,10 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-	<language>en-US</language>
+	  <language>en-US</language>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/EttienneS/Arg</projectUrl>
-    <iconUrl>..\pirate.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Added Icon</releaseNotes>
