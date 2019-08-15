@@ -22,7 +22,17 @@ namespace ExampleApp
                 // do something here
             }
 
+            var argsParser = new ArgsParser(
+                    new StringArgument("FileName", "File", "F"),
+                    new StringArgument("Surname", "LastName"),
+                    new StringArgument("Name"),
+                    new SwitchArgument("Save", "S"));
 
+
+            foreach (var arg in argsParser.Parse("-F:test.txt /Name=\"EttienneS\" -S -x"))
+            {
+                Console.WriteLine($"Matched: {arg}");
+            }
             ConsoleHelper.WaitForAnyKey();
         }
     }

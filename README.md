@@ -19,6 +19,23 @@ var option = menu.GetOption();
 
 ```
 
+```c#
+using Arg;
+
+// create parser object and define expected arguments
+var argsParser = new ArgsParser(new StringArgument("FileName", "File", "F"),
+                                new StringArgument("Surname", "LastName"),
+                                new SwitchArgument("Save", "S"),
+                                new StringArgument("Name"));
+
+// have the parser parse the string (or string[]), returns only matched arguments
+foreach (var arg in argsParser.Parse("-F:test.txt /Name=\"EttienneS\" -S -x"))
+{
+    Console.WriteLine($"Matched: {arg}");
+}
+
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
