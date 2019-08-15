@@ -5,6 +5,9 @@ Arg is a c# library to eliminate boilerplate command line and argument parsing. 
 
 Import from Nuget
 
+```nuget
+Install-Package Arg
+```
 
 ## Usage
 
