@@ -3,10 +3,10 @@ Arg is a c# library to eliminate boilerplate command line and argument parsing. 
 
 ## Installation
 
-Import from Nuget
+Import from [Nuget](https://www.nuget.org/packages/Arg)
 
 ```nuget
-Install-Package Arg
+Install-Package Arg -Version 1.0.2
 ```
 
 ## Usage
