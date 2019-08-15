@@ -1,5 +1,8 @@
 # Arg
-Arg is a c# library to eliminate boilerplate command line and argument parsing.  Arg is written in .net Standard to be compatible with both .net Core and .net Framework.
+
+*Arg* is a c# library to eliminate boilerplate command line and argument parsing.  Arg is written in .net Standard to be compatible with both .net Core and .net Framework.
+
+![alt text](https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png "Arrrgg!")
 
 ## Installation
 
