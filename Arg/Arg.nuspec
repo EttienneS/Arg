@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>$id$</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-	  <language>en-US</language>
+    <language>en-US</language>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/EttienneS/Arg</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added argument parsing</releaseNotes>
+    <releaseNotes>Change menu index to be 0 based, add method to get selected option ID instead of string.</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CommandLine Argument Parser</tags>
   </metadata>

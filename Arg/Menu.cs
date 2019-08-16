@@ -10,7 +10,6 @@ namespace Arg
         {
             Title = menuTitle;
             OptionStrings = options;
-
         }
 
         public string LineString
@@ -31,9 +30,10 @@ namespace Arg
 
         public string[] OptionStrings { get; set; }
         public string Title { get; set; }
+
         public void BlankLine()
         {
-            WriteColor("");
+            WriteColor(string.Empty);
         }
 
         public void DrawLine()
@@ -74,26 +74,29 @@ namespace Arg
             BlankLine();
         }
 
-        public string GetOption()
+        public string GetOption(int defaultOption = 0)
+        {
+            return OptionStrings[RequestOption(defaultOption, OptionStrings)];
+        }
+
+        public int GetOptionId(int defaultOption = 0)
+        {
+            return RequestOption(defaultOption, OptionStrings);
+        }
+
+        private int RequestOption(int defaultValue, string[] options)
         {
             WriteTitle();
 
-            return RequestOption(1, OptionStrings);
-        }
-
-       
-
-        private string RequestOption(int defaultValue, string[] options)
-        {
-            var message = $"Please select an option: ";
-            string value = ShowOptions(message, defaultValue, options);
+            var message = "Please select an option: ";
+            var value = ShowOptions(message, defaultValue, options);
             int selected;
             while (!int.TryParse(value, out selected) && selected <= 0 && selected > options.Length)
             {
                 value = ShowOptions(message, defaultValue, options);
             }
 
-            return options[selected - 1];
+            return selected - 1;
         }
 
         private string ShowOptions(string message, int defaultOption, string[] options)
@@ -109,14 +112,14 @@ namespace Arg
             }
 
             Write("  C. Cancel");
-            Write($"  Enter for Default ({options[defaultOption - 1]}):  ");
+            Write($"  Enter for Default ({options[defaultOption]}):  ");
             var value = Console.ReadKey().KeyChar.ToString();
             BlankLine();
 
             if (value.Equals("c", StringComparison.OrdinalIgnoreCase))
             {
                 Write("Selection canceled");
-                throw new CancellationException("Canceled selection");
+                throw new MenuCancelledException("Canceled selection");
             }
 
             if (value == "\r")

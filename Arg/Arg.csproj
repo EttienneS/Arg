@@ -7,6 +7,10 @@
     <Version>1.0.2</Version>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="*.nupkg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\icon.png">
       <Pack>True</Pack>

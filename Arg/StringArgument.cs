@@ -11,6 +11,7 @@ namespace Arg
             Name = name;
             Identifiers = identifiers.ToList();
             Identifiers.Add(name);
+            Value = string.Empty;
         }
 
         public List<string> Identifiers { get; set; }

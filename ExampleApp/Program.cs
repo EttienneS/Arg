@@ -17,7 +17,7 @@ namespace ExampleApp
                 Console.WriteLine($"Selected: {option}");
                 Console.WriteLine($"Name: {name}");
             }
-            catch (CancellationException)
+            catch (MenuCancelledException)
             {
                 // do something here
             }
