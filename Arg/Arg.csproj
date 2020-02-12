@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Arg is a c# library to eliminate boilerplate command line and argument parsing. Arg is written in .net Standard to be compatible with both .net Core and .net Framework.</Description>
     <Authors>Ettienne Scharneck</Authors>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
