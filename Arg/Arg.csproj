@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Description>Arg is a c# library to eliminate boilerplate command line and argument parsing. Arg is written in .net Standard to be compatible with both .net Core and .net Framework.</Description>
     <Authors>Ettienne Scharneck</Authors>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 

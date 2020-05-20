@@ -2,9 +2,9 @@
 # uncomment the following and add your key before first run:
 # nuget setApiKey YOUR_KEY_HERE
 
-Remove-Item *.nupkg -Force
+#Remove-Item *.nupkg -Force
 
-nuget pack
+#nuget pack
 
 $package = $(Get-ChildItem *.nupkg).Name
 
