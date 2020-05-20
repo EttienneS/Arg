@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>$id$</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -12,7 +12,7 @@
     <iconUrl>https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Add extension methods to make finding args in parsed collections easier.</releaseNotes>
+    <releaseNotes>Add extra parse constructor options.</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CommandLine Argument Parser</tags>
   </metadata>

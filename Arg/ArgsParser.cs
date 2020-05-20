@@ -7,29 +7,36 @@ namespace Arg
 {
     public class ArgsParser
     {
+        public List<IArgument> ArgumentDefinitions = new List<IArgument>();
+
         public ArgsParser(params IArgument[] arguments)
         {
             ArgumentDefinitions.AddRange(arguments);
         }
 
-        public List<IArgument> ArgumentDefinitions = new List<IArgument>();
-
-
         public List<IArgument> Parse(string inputArgs)
         {
-            var args = new List<IArgument>();
             var regex = @"(?:\s*)(?<=[-|\/])(?<name>\w*)[:|=](['""]((?<quoted>.*?)(?<!\\)['""])|(?<unquoted>[\w]*))|(?<novalue>[\w]+)";
+            var args = new List<string>();
             foreach (Match match in Regex.Matches(inputArgs, regex))
             {
-                if (TryParseArg(match.Value, out IArgument arg))
+                args.Add(match.Value);
+            }
+            return Parse(args);
+        }
+
+        public List<IArgument> Parse(IEnumerable<string> inputArgs)
+        {
+            var args = new List<IArgument>();
+            foreach (var inputArg in inputArgs)
+            {
+                if (TryParseArg(inputArg, out IArgument arg))
                 {
                     args.Add(arg);
                 }
             }
             return args;
         }
-
-      
 
         private bool TryParseArg(string inputArg, out IArgument argument)
         {
