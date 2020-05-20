@@ -34,10 +34,23 @@ var argsParser = new ArgsParser(new StringArgument("FileName", "File", "F"),
                                 new StringArgument("Name"));
 
 // have the parser parse the string (or string[]), returns only matched arguments
-foreach (var arg in argsParser.Parse("-F:test.txt /Name=\"EttienneS\" -S -x"))
+var parseResult = argsParser.Parse("-F:test.txt /Name=\"EttienneS\" -S -x");
+foreach (var arg in parseResult)
 {
     Console.WriteLine($"Matched: {arg}");
 }
+
+// find a value of a specific arg in the bundle using extension methods introducted in v1.0.5
+var name = parseResult.GetValue("Name");
+var surname = parseResult.GetValueOrDefault("LastName", "Smith"); // returns smith if no value is given
+
+var boolValue = parseResult.GetValue<bool>("Save");
+var booldefault = parseResult.GetValueOrDefault("yes", true); // returns true if no value is given (result is a bool)
+
+var intDefault = parseResult.GetValueOrDefault("number", 13); // returns 13 if no value is given, result is convert to int
+
+var exception = parseResult.GetValue("nonsense"); // throws keynotfound exception
+
 
 ```
 
