@@ -10,7 +10,6 @@
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/EttienneS/Arg</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png</iconUrl>
-    <readme>https://raw.githubusercontent.com/EttienneS/Arg/master/README.md</readme>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Impove Menu.</releaseNotes>
