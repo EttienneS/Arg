@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>$id$</id>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -10,9 +10,10 @@
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/EttienneS/Arg</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png</iconUrl>
+    <readme>https://raw.githubusercontent.com/EttienneS/Arg/master/README.md</readme>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Add extra parse constructor options.</releaseNotes>
+    <releaseNotes>Impove Menu.</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>CommandLine Argument Parser</tags>
   </metadata>

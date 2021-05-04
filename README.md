@@ -1,6 +1,6 @@
 # Arg
 
-*Arg* is a c# library to eliminate boilerplate command line and argument parsing.  Arg is written in .net Standard to be compatible with both .net Core and .net Framework.
+*Arg* is a c# library to help eliminate boilerplate command line and argument parsing.  Arg is written in .net Standard to be compatible with both .net Core and .net Framework.
 
 ![alt text](https://raw.githubusercontent.com/EttienneS/Arg/master/icon.png "Arrrgg!")
 
@@ -15,11 +15,43 @@ Install-Package Arg -Version 1.0.6
 ## Usage
 
 ```c#
+
 // parse command line inputs in a menu form
 using Arg;
 
-var menu = new Menu("\tExample :)", "Option 1", "Cheese", "That option with the long name");
+var menu = new Menu<string>("\tExample :)", "Option 1", "Cheese", "That option with the long name");
 var option = menu.GetOption();
+
+// Outputs:
+// Please select an option:
+// 
+//   1. Option  1
+//   2. Cheese
+//   3. That  option  with  the  long  name
+//   C. Cancel
+//   Enter for Default (Option  1):
+
+public enum TestEnum
+{
+    Value1, Test2, FourtyOne, Seven, AnotherOption
+}
+
+var enumMenu = new Menu<TestEnum>("\tExample :)", Enum.GetValues(typeof(TestEnum)).OfType<TestEnum>().ToArray());
+var enumOption = enumMenu.GetOption();
+
+// Outputs:
+// Please select an option:
+// 
+//   1. Value 1
+//   2. Test 2
+//   3. Fourty One
+//   4. Seven
+//   5. Another Option
+//   C. Cancel
+//   Enter for Default (Value 1):
+
+// the Menu object has an optional constructor parameter that takes a Func<T, string> method that is used to 'Prettify' the input object.  
+// By default this does T.ToString().SplitCamelCase() to work for most enums.
 
 ```
 

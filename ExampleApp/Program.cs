@@ -7,22 +7,33 @@ namespace ExampleApp
 {
     internal class Program
     {
+        public enum TestEnum
+        {
+            Value1, Test2, FourtyOne, Seven, AnotherOption
+        }
+
         private static void Main(string[] args)
         {
-            //try
-            //{
-            //    var menu = new Menu("\tExample :)", "Option 1", "Cheese", "That option with the long name");
-            //    var option = menu.GetOption();
+            try
+            {
+                var enumMenu = new Menu<TestEnum>("\tExample :)", Enum.GetValues(typeof(TestEnum)).OfType<TestEnum>().ToArray());
+                var enumOption = enumMenu.GetOption();
 
-            //    var name = ConsoleHelper.RequestInfo("Name", "Ettienne");
+                Console.WriteLine($"Selected: {enumOption}");
 
-            //    Console.WriteLine($"Selected: {option}");
-            //    Console.WriteLine($"Name: {name}");
-            //}
-            //catch (MenuCancelledException)
-            //{
-            //    // do something here
-            //}
+                var menu = new Menu<string>("\tExample :)", "Option 1", "Cheese", "That option with the long name");
+                var option = menu.GetOption();
+
+                Console.WriteLine($"Selected: {option}");
+
+                var thisName = ConsoleHelper.RequestInfo("Name", "Ettienne");
+
+                Console.WriteLine($"Name: {thisName}");
+            }
+            catch (MenuCancelledException)
+            {
+                // do something here
+            }
 
             var argsParser = new ArgsParser(
                     new StringArgument("FileName", "File", "F"),
