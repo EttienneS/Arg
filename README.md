@@ -9,7 +9,7 @@
 Import from [Nuget](https://www.nuget.org/packages/Arg)
 
 ```nuget
-Install-Package Arg -Version 1.0.6
+Install-Package Arg -Version 1.0.8
 ```
 
 ## Usage
