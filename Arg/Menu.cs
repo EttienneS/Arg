@@ -2,14 +2,20 @@
 
 namespace Arg
 {
-    public class Menu
+    public class Menu<T>
     {
+        private readonly Func<T, string> _convertFunction;
         private string _lineString;
 
-        public Menu(string menuTitle, params string[] options)
+        public Menu(string menuTitle, Func<T, string> convertFunction, params T[] options)
         {
             Title = menuTitle;
-            OptionStrings = options;
+            Options = options;
+            _convertFunction = convertFunction;
+        }
+
+        public Menu(string menuTitle, params T[] options) : this(menuTitle, (T v) => v.ToString().SplitCamelCase(), options)
+        {
         }
 
         public string LineString
@@ -28,17 +34,30 @@ namespace Arg
             }
         }
 
-        public string[] OptionStrings { get; set; }
+        public T[] Options { get; set; }
         public string Title { get; set; }
 
-        public void BlankLine()
+        public void BlankLine(int count = 1)
         {
-            WriteColor(string.Empty);
+            for (int i = 0; i < count; i++)
+            {
+                WriteColor(string.Empty);
+            }
         }
 
         public void DrawLine()
         {
             WriteColor(LineString);
+        }
+
+        public T GetOption(int defaultOption = 0)
+        {
+            return Options[RequestOption(defaultOption, Options)];
+        }
+
+        public int GetOptionId(int defaultOption = 0)
+        {
+            return RequestOption(defaultOption, Options);
         }
 
         public void Write(string message)
@@ -67,39 +86,38 @@ namespace Arg
         public void WriteTitle()
         {
             DrawLine();
-            BlankLine();
             WriteColor(Title);
             BlankLine();
             DrawLine();
             BlankLine();
         }
 
-        public string GetOption(int defaultOption = 0)
+        private string GetPrettyString(T option)
         {
-            return OptionStrings[RequestOption(defaultOption, OptionStrings)];
+            return _convertFunction.Invoke(option);
         }
 
-        public int GetOptionId(int defaultOption = 0)
-        {
-            return RequestOption(defaultOption, OptionStrings);
-        }
-
-        private int RequestOption(int defaultValue, string[] options)
+        private int RequestOption(int defaultValue, T[] options)
         {
             WriteTitle();
 
-            var message = "Please select an option: ";
+            const string message = "Please select an option: ";
             var value = ShowOptions(message, defaultValue, options);
-            int selected;
-            while (!int.TryParse(value, out selected) && selected <= 0 && selected > options.Length)
+
+            var parseResult = int.TryParse(value, out int selected);
+
+            if (!parseResult || selected < 0 || selected > options.Length)
             {
-                value = ShowOptions(message, defaultValue, options);
+                Write($"Invalid selection: {selected}");
+                BlankLine(2);
+
+                selected = RequestOption(defaultValue, options);
             }
 
-            return selected - 1;
+            return Math.Max(0, selected - 1);
         }
 
-        private string ShowOptions(string message, int defaultOption, string[] options)
+        private string ShowOptions(string message, int defaultOption, T[] options)
         {
             Write(message);
             BlankLine();
@@ -107,12 +125,12 @@ namespace Arg
             var index = 1;
             foreach (var option in options)
             {
-                Console.WriteLine($"  {index}. {option}");
+                Console.WriteLine($"  {index}. {GetPrettyString(option)}");
                 index++;
             }
 
             Write("  C. Cancel");
-            Write($"  Enter for Default ({options[defaultOption]}):  ");
+            Write($"  Enter for Default ({GetPrettyString(options[defaultOption])}):  ");
             var value = Console.ReadKey().KeyChar.ToString();
             BlankLine();
 
